@@ -6,7 +6,6 @@ public class Person {
     int age;
     boolean isLive = true;
     String name = "Yimkong";
-    String graduatedFrom;
 
     public int getAge() {
         return age;
