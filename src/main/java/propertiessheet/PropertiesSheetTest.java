@@ -1,6 +1,8 @@
 package propertiessheet;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -23,6 +25,12 @@ public class PropertiesSheetTest extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Person bean = new Person();
+        bean.addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.err.println(newValue);
+            }
+        });
         ObservableList<PropertySheet.Item> properties = BeanPropertyUtils.getProperties(bean);
         PropertySheet propertySheet = new PropertySheet(properties);
         propertySheet.setSearchBoxVisible(false);

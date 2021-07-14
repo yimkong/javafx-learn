@@ -1,11 +1,26 @@
 package propertiessheet;
 
-import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+
 
 public class Person {
     int age;
     boolean isLive = true;
     String name = "Yimkong";
+    SimpleStringProperty sex = new SimpleStringProperty("man");
+
+    void addListener(ChangeListener listener){
+        sex.addListener(listener);
+    }
+
+    public String getSex() {
+        return sex.get();
+    }
+
+    public void setSex(String sex) {
+        this.sex.set(sex);
+    }
 
     public int getAge() {
         return age;
